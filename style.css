@@ -1,0 +1,281 @@
+/* Basic Body and Typography Styles */
+:root {
+    --primary-color: #0d47a1; /* A deeper, more official blue */
+    --primary-color-light: #e3f2fd;
+    --bg-color: #f4f7f9;
+    --surface-color: #ffffff;
+    --text-color: #2c3e50;
+    --text-color-secondary: #7f8c8d;
+    --border-color: #e0e6ed;
+    --shadow-color: rgba(44, 62, 80, 0.1);
+    --focus-shadow: rgba(13, 71, 161, 0.25);
+
+    /* Medal Colors */
+    --gold: #ffc107;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Header and Controls */
+header {
+    background-color: transparent;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+#searchInput, #year {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#searchInput:focus, #year:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+/* Top Performer Card Styles */
+.card {
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    margin-bottom: 30px;
+    padding: 24px;
+    display: none; /* Hidden by default */
+    animation: slideInUp 0.6s ease-out;
+}
+
+.top-performer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+}
+
+.top-performer-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-color-secondary);
+}
+
+.top-country {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-country img {
+    width: 40px;
+    border-radius: 4px;
+}
+
+.top-country h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Table Styles */
+#medalTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--surface-color);
+}
+
+#medalTable th, #medalTable td {
+    padding: 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#medalTable thead {
+    background-color: var(--surface-color);
+}
+
+#medalTable thead th {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-color-secondary);
+    border-bottom-width: 2px;
+}
+
+/* Medal Column Styling */
+#medalTable th[data-sort="gold"], #medalTable td:nth-child(3) { color: var(--gold); font-weight: 600; }
+#medalTable th[data-sort="silver"], #medalTable td:nth-child(4) { color: var(--silver); font-weight: 600; }
+#medalTable th[data-sort="bronze"], #medalTable td:nth-child(5) { color: var(--bronze); font-weight: 600; }
+
+#medalTable td:first-child {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+#medalTable .country-cell {
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Styles for the sort direction indicators (arrows) */
+#medalTable thead th.sorted-asc::after,
+#medalTable thead th.sorted-desc::after {
+    content: '';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    border: 4px solid transparent;
+    transition: transform 0.2s;
+}
+
+#medalTable thead th.sorted-asc::after {
+    border-bottom-color: var(--primary-color);
+    transform: translateY(-80%);
+}
+
+#medalTable thead th.sorted-desc::after {
+    border-top-color: var(--primary-color);
+    transform: translateY(-20%);
+}
+
+#medalTable tbody tr {
+    transition: background-color 0.2s, transform 0.2s;
+    will-change: transform;
+}
+
+#medalTable tbody tr:hover {
+    background-color: var(--primary-color-light);
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+#medalTable tbody tr.selected {
+    background-color: var(--primary-color-light);
+    font-weight: 500;
+}
+
+/* Styles for the country cell with flag */
+.country-cell {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+}
+
+.flag-icon {
+    width: 20px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Top Performer Medal Counts */
+.top-performer-medals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 16px;
+    text-align: center;
+}
+
+.medal-count {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+}
+
+.medal-count span {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.medal-count.gold span { color: var(--gold); }
+.medal-count.silver span { color: var(--silver); }
+.medal-count.bronze span { color: var(--bronze); }
+.medal-count.total span { color: var(--text-color); }
+
+/* Chart Container */
+.chart-container {
+    display: none; /* Hidden by default */
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { opacity: 1; transform: translateY(0); }
+}

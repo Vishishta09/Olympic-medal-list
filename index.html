@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olympic Medal List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Olympic Medal Standings</h1>
+        <div class="controls">
+            <div class="year-selector">
+                <label for="year">Year:</label>
+                <select id="year">
+                    <option value="all" selected>All Years (Combined)</option>
+                    <option value="2024">Paris 2024</option>
+                    <option value="2020">Tokyo 2020</option>
+                    <option value="2016">Rio 2016</option>
+                    <option value="2012">London 2012</option>
+                    <option value="2008">Beijing 2008</option>
+                    <option value="2004">Athens 2004</option>
+                    <option value="2000">Sydney 2000</option>
+                </select>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by country...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="top-performer" class="card">
+            <!-- Top performer details will be inserted here by JavaScript -->
+        </section>
+
+        <table id="medalTable">
+            <thead>
+                <tr>
+                    <th data-sort="rank">Rank</th>
+                    <th data-sort="country">Country</th>
+                    <th data-sort="gold">Gold</th>
+                    <th data-sort="silver">Silver</th>
+                    <th data-sort="bronze">Bronze</th>
+                    <th data-sort="total">Total</th>
+                </tr>
+            </thead>
+            <tbody id="medalTableBody">
+                <!-- Rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+        <div class="chart-container">
+            <canvas id="medalChart"></canvas>
+        </div>
+    </main>
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
